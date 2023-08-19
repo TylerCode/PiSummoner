@@ -7,11 +7,34 @@ The problem is that Wake On LAN isn't always available for these machines or its
 
 ## The Hat
 
-__TODO: Detail how the hat can be constructed/purchased__
+So for the hat, you can really use whatever you like. I personally used !(this guy for now)[https://www.amazon.com/gp/product/B07CZL2SKN]. You can use whatever you like, just be sure to modify the main.c file to include the additional ones.
 
 ## The Setup
 
-__TODO: Write the setup stuff__
+For this I just did a default Raspberry Pi OS install on a Zero W. 
+
+Once that is all setup, install the libs and clone this repository
+```
+sudo apt-get install gcc libmicrohttpd-dev pigpio
+git clone https://github.com/TylerCode/PiSummoner
+cd PiSummoner
+```
+
+Next up, we'll build the application and run it
+
+```
+gcc main.c -o main -lpigpio -lmicrohttpd -lrt
+chmod +x main
+./main
+```
+
+Now, you should be able to visit the webpage at `http://<yourpi-IP>:8080`
+
+Clicking each button should trigger a different relay for 1 second.
+
+
+For a more... permanent solution, you can run this in a tmux window or daemonize the application (which is probably what I will end up doing)
+
 
 ## Final Notes
 
