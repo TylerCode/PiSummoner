@@ -7,7 +7,7 @@ The problem is that Wake On LAN isn't always available for these machines or its
 
 ## The Hat
 
-So for the hat, you can really use whatever you like. I personally used !(this guy for now)[https://www.amazon.com/gp/product/B07CZL2SKN]. You can use whatever you like, just be sure to modify the main.c file to include the additional ones.
+So for the hat, you can really use whatever you like. I personally used [this guy for now](https://www.amazon.com/gp/product/B07CZL2SKN) (not an affiliate link or anything). You can use whatever you like, just be sure to modify the main.c file to include the additional ones.
 
 ## The Setup
 
