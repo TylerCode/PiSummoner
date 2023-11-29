@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <syslog.h>
 #include <microhttpd.h>
 #include <pigpio.h>
 
@@ -34,6 +35,7 @@ static enum MHD_Result handle_request(void *cls, struct MHD_Connection *connecti
 		size_t *upload_data_size, void **ptr)
 {
 	int pin;
+	syslog(LOG_INFO, "Received request: %s", url);
 
 	if(strcmp(url, "/") == 0)
 		return serve_html(connection);
@@ -44,8 +46,14 @@ static enum MHD_Result handle_request(void *cls, struct MHD_Connection *connecti
 		pin = PIN_2;
 	else if(strcmp(url, "/3") == 0)
 		pin = PIN_3;
-	else
-		return MHD_NO;
+	else {
+	        syslog(LOG_ERR, "Invalid request: %s", url); 
+	        const char *errorPage = "Error: Invalid request";
+	        struct MHD_Response *response = MHD_create_response_from_buffer(strlen(errorPage), (void *)errorPage, MHD_RESPMEM_PERSISTENT);
+	        int ret = MHD_queue_response(connection, MHD_HTTP_NOT_FOUND, response);
+	        MHD_destroy_response(response);
+	        return ret;
+    	}
 	
 	//Turn the GPIO pin on for 1 second to turn on/off the PC
 	gpioWrite(pin, 1);
@@ -63,6 +71,8 @@ static enum MHD_Result handle_request(void *cls, struct MHD_Connection *connecti
 
 int main()
 {
+	openlog("PiSummoner", LOG_PID|LOG_CONS, LOG_USER);
+	
 	if(gpioInitialise() < 0)
 	{
 		fprintf(stderr, "Failed to initialize the GPIO\n");
@@ -86,5 +96,6 @@ int main()
 
 	MHD_stop_daemon(daemon);
 	gpioTerminate();
+	closelog();
 	return 0;
 }
