@@ -4,7 +4,7 @@ Description=Pi summoner service
 [Service]
 ExecStart=/usr/local/bin/pi-summoner
 Restart=always
-User=pi
+User=root
 
 [Install]
 WantedBy=multi-user.target
