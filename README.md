@@ -25,7 +25,7 @@ Next up, we'll build the application and run it
 ```
 gcc main.c -o main -lpigpio -lmicrohttpd -lrt
 chmod +x main
-./main
+sudo ./main
 ```
 
 Now, you should be able to visit the webpage at `http://<yourpi-IP>:8080`
