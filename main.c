@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <signal.h>
 #include <string.h>
 #include <stdlib.h>
 #include <syslog.h>
@@ -10,6 +11,10 @@
 #define PIN_2 20
 #define PIN_3 21
 #define HTTP_PORT 8080
+
+void intHandler(int dummy) {
+    keepRunning = 0;
+}
 
 static enum MHD_Result serve_html(struct MHD_Connection *connection)
 {
@@ -114,8 +119,10 @@ static enum MHD_Result handle_request(void *cls, struct MHD_Connection *connecti
 	return ret;
 }
 
-int main()
-{
+int main() {
+    signal(SIGINT, intHandler);
+    signal(SIGTERM, intHandler);
+
 	openlog("PiSummoner", LOG_PID | LOG_CONS, LOG_USER);
 
 	if (gpioInitialise() < 0)
@@ -137,7 +144,9 @@ int main()
 		return 1;
 	}
 
-	getchar();
+	while (keepRunning) {
+		//For now, nothing to do here
+	}
 
 	MHD_stop_daemon(daemon);
 	gpioTerminate();

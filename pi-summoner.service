@@ -1,0 +1,10 @@
+[Unit]
+Description=Pi summoner service
+
+[Service]
+ExecStart=/usr/local/bin/pi-summoner
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
