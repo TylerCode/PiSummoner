@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
 #include <syslog.h>
@@ -12,30 +13,30 @@
 
 static enum MHD_Result serve_html(struct MHD_Connection *connection)
 {
-const char *page = "<!DOCTYPE html>"
-                   "<html>"
-                   "<head>"
-                   "<title>Pi Summoner</title>"
-                   "<style>"
-                   "body { font-family: Arial, sans-serif; background-color: #f0f0f0; text-align: center; padding-top: 50px; }"
-                   ".button-grid { display: grid; grid-template-columns: auto auto; justify-content: center; gap: 10px; }"
-                   "button { background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; text-decoration: none;"
-                   "display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border: none; border-radius: 4px; }"
-                   "button:hover { background-color: #45a049; }"
-                   "</style>"
-                   "</head>"
-                   "<body>"
-                   "<h2>Pi Summoner</h2>"
-                   "<div class=\"button-grid\">"
-                   "<button onclick=\"fetch('/1')\">Pin 26</button>"
-                   "<button onclick=\"fetch('/long_1')\">Long press Pin 26</button>"
-                   "<button onclick=\"fetch('/2')\">Pin 20</button>"
-                   "<button onclick=\"fetch('/long_2')\">Long press Pin 20</button>"
-                   "<button onclick=\"fetch('/3')\">Pin 21</button>"
-				   "<button onclick=\"fetch('/long_3')\">Long press Pin 21</button>"
-                   "</div>"
-                   "</body>"
-                   "</html>";
+	const char *page = "<!DOCTYPE html>"
+					   "<html>"
+					   "<head>"
+					   "<title>Pi Summoner</title>"
+					   "<style>"
+					   "body { font-family: Arial, sans-serif; background-color: #f0f0f0; text-align: center; padding-top: 50px; }"
+					   ".button-grid { display: grid; grid-template-columns: auto auto; justify-content: center; gap: 10px; }"
+					   "button { background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; text-decoration: none;"
+					   "display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border: none; border-radius: 4px; }"
+					   "button:hover { background-color: #45a049; }"
+					   "</style>"
+					   "</head>"
+					   "<body>"
+					   "<h2>Pi Summoner</h2>"
+					   "<div class=\"button-grid\">"
+					   "<button onclick=\"fetch('/1')\">Pin 26</button>"
+					   "<button onclick=\"fetch('/long_1')\">Long press Pin 26</button>"
+					   "<button onclick=\"fetch('/2')\">Pin 20</button>"
+					   "<button onclick=\"fetch('/long_2')\">Long press Pin 20</button>"
+					   "<button onclick=\"fetch('/3')\">Pin 21</button>"
+					   "<button onclick=\"fetch('/long_3')\">Long press Pin 21</button>"
+					   "</div>"
+					   "</body>"
+					   "</html>";
 
 	struct MHD_Response *response;
 	response = MHD_create_response_from_buffer(strlen(page), (void *)page, MHD_RESPMEM_PERSISTENT);
