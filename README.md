@@ -2,43 +2,51 @@
 
 This is a utility that solves a very specific problem I have. I like to take my old PCs and stuff them in a server chassis for the ability to boot them up when needed or like for example if there is an old game I want to play on an old OS. 
 
-The problem is that Wake On LAN isn't always available for these machines or its inconsistent. So the easiest solution is just to walk over and turn on the PC but sometimes that isn't possible. So having a little web utility that can "physically" press the power button is the best option, if a bit janky. 
+The problem is that Wake On LAN isn't always available for these machines or its inconsistent. So the easiest solution is just to walk over and turn on the PC, but I'm lazy and sometimes I'm not playing from the same place as the machine. So having a little web utility that can "physically" press the power button is the best option, if a bit janky. 
 
 ![image](https://github.com/TylerCode/PiSummoner/assets/18288340/c57e9fff-9693-460a-b0d8-3f9f541ca8bf)
 
 
 ## The Hat
 
-So for the hat, you can really use whatever you like. I personally used [this guy for now](https://www.amazon.com/gp/product/B07CZL2SKN) (not an affiliate link or anything). You can use whatever you like, just be sure to modify the main.c file to include the additional ones.
+So for the hat, you can really use whatever you like. I personally used [this guy for now](https://www.amazon.com/gp/product/B07CZL2SKN) (not an affiliate link or anything). You can use whatever you like, just be sure to modify the main.c file to include the correct pinouts and such.
 
 ## The Setup
 
-For this I just did a default Raspberry Pi OS install on a Zero W. 
+For my setup, I repurposed an old Raspberry Pi 1b (the little dude still works after almost a decade) and the hat above. I installed Rasbperry Pi Lite (32-bit). If you're doing this on a newer Pi, you'll want to do the 64 bit version. 
 
 Once that is all setup, install the dependencies and clone this repository
-```
+
+```bash
 sudo apt-get install gcc libmicrohttpd-dev pigpio git
 git clone https://github.com/TylerCode/PiSummoner
 cd PiSummoner
 ```
 
-Next up, we'll build the application and run it
+Next up, we'll build the application and install it. This will install and start a daemon called `pi-summoner`
 
-```
+```bash
 ./build.sh
 sudo ./install.sh
 ```
 
 Now, you should be able to visit the webpage at `http://<yourpi-IP>:8080`
 
-Clicking each button should trigger a different relay for 1 second.
+Clicking each button should trigger a different relay for 1 second, or on the long press, 8 seconds (to allow for hard resets when a machine is frozen).
 
+## Uninstalling
 
-For a more... permanent solution, you can run this in a tmux window or daemonize the application (which is probably what I will end up doing)
+To uninstall, simply use the uninstall script included. 
+
+```bash
+sudo ./uninstall.sh
+```
+
+That's it, you can start fresh again by doing a git pull, then running the setup steps again. 
 
 ## Contributing
 
-I'm pretty open to any suggestions and feature additions. This would not be a bad first project to contribute to for someone new to C and contributions are welcomed by developers of any experience level. Here's how you can contribute:
+I'm pretty open to any suggestions, feature additions, and code improvements (it's quite messy). This would not be a bad first project to contribute to for someone new to C and contributions are welcomed by developers of any experience level. As such, here is a very detailed guide to get started:
 
 ### Getting Started
 
