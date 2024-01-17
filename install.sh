@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define paths
-BUILD_DIR="/home/pi/PiSummoner/build"
-SERVICE_FILE_DIR="/home/pi/PiSummoner/pi-summoner.service"
+BUILD_DIR="./build"
+SERVICE_FILE_DIR="./pi-summoner.service"
 BIN_DIR="/usr/local/bin"
 SERVICE_DIR="/etc/systemd/system"
 
