@@ -2,7 +2,7 @@
 
 # Define paths
 BUILD_DIR="./build"
-SERVICE_FILE_DIR="./pi-summoner.service"
+SERVICE_FILE_DIR="./"
 BIN_DIR="/usr/local/bin"
 SERVICE_DIR="/etc/systemd/system"
 
