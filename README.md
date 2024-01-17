@@ -4,6 +4,8 @@ This is a utility that solves a very specific problem I have. I like to take my 
 
 The problem is that Wake On LAN isn't always available for these machines or its inconsistent. So the easiest solution is just to walk over and turn on the PC but sometimes that isn't possible. So having a little web utility that can "physically" press the power button is the best option, if a bit janky. 
 
+![image](https://github.com/TylerCode/PiSummoner/assets/18288340/c57e9fff-9693-460a-b0d8-3f9f541ca8bf)
+
 
 ## The Hat
 
