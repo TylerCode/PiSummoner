@@ -12,6 +12,8 @@
 #define PIN_3 21
 #define HTTP_PORT 8080
 
+volatile sig_atomic_t keepRunning = 1;
+
 void intHandler(int dummy) {
     keepRunning = 0;
 }
