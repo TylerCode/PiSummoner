@@ -13,9 +13,9 @@ So for the hat, you can really use whatever you like. I personally used [this gu
 
 For this I just did a default Raspberry Pi OS install on a Zero W. 
 
-Once that is all setup, install the libs and clone this repository
+Once that is all setup, install the dependencies and clone this repository
 ```
-sudo apt-get install gcc libmicrohttpd-dev pigpio
+sudo apt-get install gcc libmicrohttpd-dev pigpio git
 git clone https://github.com/TylerCode/PiSummoner
 cd PiSummoner
 ```
