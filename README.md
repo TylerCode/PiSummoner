@@ -1,3 +1,5 @@
+[![Build Pi-Summoner](https://github.com/TylerCode/PiSummoner/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/TylerCode/PiSummoner/actions/workflows/c-cpp.yml)
+
 # PiSummoner
 
 This is a utility that solves a very specific problem I have. I like to take my old PCs and stuff them in a server chassis for the ability to boot them up when needed or like for example if there is an old game I want to play on an old OS. 
