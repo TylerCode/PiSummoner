@@ -5,7 +5,18 @@
 #include <stdlib.h>
 #include <syslog.h>
 #include <microhttpd.h>
+
+#ifdef RASPBERRY_PI
 #include <pigpio.h>
+#else
+// Mock definitions for non-Raspberry Pi environments
+#define PI_OUTPUT 0
+int gpioInitialise() { return 0; }
+void gpioTerminate() {}
+void gpioSetMode(int pin, int mode) {}
+void gpioWrite(int pin, int level) {}
+void time_sleep(double seconds) {}
+#endif
 
 #define PIN_1 26
 #define PIN_2 20
