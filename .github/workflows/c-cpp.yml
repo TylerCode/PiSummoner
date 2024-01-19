@@ -1,23 +1,37 @@
-name: C/C++ CI
+name: Build Pi-Summoner
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install Cross Compiling Tools
+      run: sudo apt-get install -y gcc-arm-linux-gnueabihf libc6-dev-armhf-cross
+
+    - name: Run Build Script
+      run: |
+        chmod +x build.sh
+        ./build.sh
+
+    - name: Rename and Move Executable
+      run: |
+        mv build/main build/pi-summoner
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: pi-summoner
+        path: build/pi-summoner
