@@ -26,6 +26,9 @@ jobs:
         chmod +x build.sh
         ./build.sh
 
+    - name: List Build Directory Contents
+      run: ls -l build/
+
     - name: Rename and Move Executable
       run: |
         mv build/main build/pi-summoner
