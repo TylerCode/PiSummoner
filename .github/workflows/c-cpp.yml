@@ -22,7 +22,7 @@ jobs:
       run: sudo apt-get install -y gcc-arm-linux-gnueabihf libc6-dev-armhf-cross
 
     - name: Install Dependencies
-      run: sudo apt-get update && sudo apt-get install -y libpigpio-dev libmicrohttpd-dev
+      run: sudo apt-get update && sudo apt-get install -y libmicrohttpd-dev
 
     - name: Run Build Script
       run: |
