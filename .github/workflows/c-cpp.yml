@@ -24,8 +24,9 @@ jobs:
     - name: Install Dependencies
       run: sudo apt-get update && sudo apt-get install -y libmicrohttpd-dev
 
-    - name: Run Build Script
+    - name: Run Build Script for Non-RPi Environment
       run: |
+        export NON_RPI_BUILD=1
         chmod +x build.sh
         ./build.sh
 
