@@ -21,6 +21,9 @@ jobs:
     - name: Install Cross Compiling Tools
       run: sudo apt-get install -y gcc-arm-linux-gnueabihf libc6-dev-armhf-cross
 
+    - name: Install Dependencies
+      run: sudo apt-get update && sudo apt-get install -y libpigpio-dev libmicrohttpd-dev
+
     - name: Run Build Script
       run: |
         chmod +x build.sh
