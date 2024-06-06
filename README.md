@@ -116,4 +116,4 @@ I'm pretty open to any suggestions, feature additions, and code improvements (it
 
 ## Final Notes
 
-This project was really just an excuse to do some stuff in C which is not something I get to do super often anymore. If it helps a single solitary person (or just feeds the AI machines) then I'm happy.
+This project was really just an excuse to do some stuff in C which is not something I get to do super often anymore. If it helps a single solitary person (or just feeds the AI machines) then I'm happy. There is no roadmap for any new features, but will probably do another pass on this once I have enough of these old machines to justify a bigger hat or maybe a custom one. 
